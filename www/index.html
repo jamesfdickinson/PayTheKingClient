@@ -69,6 +69,7 @@
         </div>
 
     </div>
+    <script src="cordova.js"></script>
     <script src="js/fastclick.js"></script>
     <script>
         if ('addEventListener' in document) {
@@ -157,6 +158,11 @@
             AnalyticsGA.TrackStart("PayTheKing", '1.0.0');
             AnalyticsGA.TrackPage("MainMenu");
         });
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            if (typeof cordova.InAppBrowser != 'undefined')
+                window.open = cordova.InAppBrowser.open;
+        }
     </script>
 </body>
 </html>
